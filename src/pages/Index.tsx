@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -35,7 +34,7 @@ const Index = () => {
           toast({
             title: "Suspicious QR Code detected",
             description: "This URL has some suspicious characteristics. Proceed with caution.",
-            variant: "warning",
+            variant: "default",
           });
         } else {
           toast({

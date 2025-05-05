@@ -1,6 +1,5 @@
-
 import React, { useState, useRef, useCallback } from 'react';
-import { Camera, Upload, PasteClipboard, ScanLine } from 'lucide-react';
+import { Camera, Upload, Clipboard, ScanLine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -119,7 +118,7 @@ const QRCodeScanner: React.FC<QRCodeScannerProps> = ({ onQRCodeScanned, isScanni
             Upload
           </TabsTrigger>
           <TabsTrigger value="paste">
-            <PasteClipboard className="w-4 h-4 mr-2" />
+            <Clipboard className="w-4 h-4 mr-2" />
             Paste
           </TabsTrigger>
           <TabsTrigger value="camera">
@@ -182,7 +181,7 @@ const QRCodeScanner: React.FC<QRCodeScannerProps> = ({ onQRCodeScanned, isScanni
                   </div>
                 ) : (
                   <div className="text-center">
-                    <PasteClipboard className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <Clipboard className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                     <p className="mb-4 text-sm text-muted-foreground">Paste an image from clipboard</p>
                     <Button onClick={handlePaste}>Paste from Clipboard</Button>
                   </div>
