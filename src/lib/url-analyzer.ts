@@ -95,14 +95,14 @@ export const analyzeUrl = (url: string): URLAnalysisResult => {
       title: "Secure Connection",
       description: "The URL uses HTTPS for secure data transfer.",
       status: "positive",
-      icon: <Lock className="h-5 w-5 text-safe" />
+      iconType: "lock"
     });
   } else {
     findings.push({
       title: "Insecure Connection",
       description: "The URL doesn't use HTTPS, leaving data transfers potentially vulnerable.",
       status: "negative",
-      icon: <AlertOctagon className="h-5 w-5 text-danger" />
+      iconType: "alert-octagon"
     });
     riskScore += 25;
   }
@@ -113,7 +113,7 @@ export const analyzeUrl = (url: string): URLAnalysisResult => {
       title: "IP Address Detected",
       description: "The URL uses an IP address instead of a domain name, which is often associated with phishing.",
       status: "negative",
-      icon: <Hash className="h-5 w-5 text-danger" />
+      iconType: "hash"
     });
     riskScore += 30;
   }
@@ -154,7 +154,7 @@ export const analyzeUrl = (url: string): URLAnalysisResult => {
       title: "URL Shortener Detected",
       description: "The URL uses a shortening service, which can disguise the actual destination.",
       status: "warning",
-      icon: <Timer className="h-5 w-5 text-warning" />
+      iconType: "timer"
     });
     riskScore += 15;
   }

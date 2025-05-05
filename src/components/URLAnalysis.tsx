@@ -35,6 +35,7 @@ export interface URLAnalysisResult {
     title: string;
     description: string;
     status: 'positive' | 'warning' | 'negative';
+    iconType?: 'lock' | 'alert-octagon' | 'hash' | 'timer';
     icon?: React.ReactNode;
   }[];
   scannedAt: Date;
@@ -102,6 +103,23 @@ const URLAnalysis: React.FC<URLAnalysisProps> = ({ result }) => {
     }
   };
 
+  const getIconByType = (iconType?: string) => {
+    if (!iconType) return null;
+    
+    switch (iconType) {
+      case 'lock':
+        return <Lock className="h-5 w-5 text-safe" />;
+      case 'alert-octagon':
+        return <AlertOctagon className="h-5 w-5 text-danger" />;
+      case 'hash':
+        return <Hash className="h-5 w-5 text-danger" />;
+      case 'timer':
+        return <Timer className="h-5 w-5 text-warning" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader>
@@ -147,7 +165,7 @@ const URLAnalysis: React.FC<URLAnalysisProps> = ({ result }) => {
             {result.findings.map((finding, index) => (
               <li key={index} className="flex items-start gap-3 p-3 bg-muted/50 rounded-md">
                 <div className="mt-0.5">
-                  {finding.icon || getStatusIcon(finding.status)}
+                  {finding.icon || (finding.iconType ? getIconByType(finding.iconType) : getStatusIcon(finding.status))}
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">{finding.title}</h4>
